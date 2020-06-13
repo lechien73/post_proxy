@@ -12,6 +12,12 @@ The following parameters can be set as the `name` attribute in hidden form field
 
 `x_failure` - the URL to redirect to after an error
 
+`x_data` - a comma-separated list of fields in the form
+
+The `x_data` field on the form contains a comma-separated list of fields that exist on the form. These fields and values will be passed to the success page as GET parameters. The purpose of this is so that you can access data from the form in the success page.
+
+If the POST request encounters an error, it will redirect to the `x_failure` URL and supply the `code` GET parameter, which contains the error code.
+
 You can also specify these as environment variables on the host. If you want to do that, the expected variable names are:
 
 `ZAPIER_WEBHOOK`
