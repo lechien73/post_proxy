@@ -27,8 +27,12 @@ def index():
     response = requests.post(WEBHOOK, data=request.form)
 
     if response.status_code == 200:
-        data = request.form["x_data"] if request.form["x_data"] else ""
-        return redirect(f"{SUCCESS_URL}?data={data}")
+        data = []
+        if request.form["x_data"]:
+            x_data = request.form["x_data"].split(",")
+            data = [item + "=" + request.form[item] for item in x_data]
+
+        return redirect(f"{SUCCESS_URL}?{'&'.join(data) if data else ''}")
     else:
         return redirect(f"{FAILURE_URL}?code={response.status_code}")
 
