@@ -29,7 +29,7 @@ def index():
     if response.status_code == 200:
         return redirect(SUCCESS_URL)
     else:
-        return redirect(f"{FAILURE_URL}?{response.status_code}")
+        return redirect(f"{FAILURE_URL}?code={response.status_code}")
 
 
 if __name__ == "__main__":
