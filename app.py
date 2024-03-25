@@ -32,6 +32,7 @@ def index():
             x_data = request.form["x_data"].split(",")
             data = [item + "=" + request.form[item] for item in x_data]
 
+        print(request.referrer)
         return redirect(f"{SUCCESS_URL}?{'&'.join(data) if data else ''}")
     else:
         return redirect(f"{FAILURE_URL}?code={response.status_code}")
