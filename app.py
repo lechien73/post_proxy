@@ -17,11 +17,11 @@ def index():
     form fields. Uses environment variables if they're not available.
     """
 
-    WEBHOOK = request.form["x_webhook"] if request.form["x_webhook"] else os.environ.get(
+    WEBHOOK = request.form["x_webhook"] if "x_webhook" in request.form else os.environ.get(
         "ZAPIER_WEBHOOK", "")
-    SUCCESS_URL = request.form["x_success"] if request.form["x_success"] else os.environ.get(
+    SUCCESS_URL = request.form["x_success"] if "x_success" in request.form else os.environ.get(
         "SUCCESS_URL", "")
-    FAILURE_URL = request.form["x_failure"] if request.form["x_failure"] else os.environ.get(
+    FAILURE_URL = request.form["x_failure"] if "x_failure" in request.form else os.environ.get(
         "FAILURE_URL", "")
 
     response = requests.post(WEBHOOK, data=request.form)
