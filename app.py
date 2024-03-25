@@ -28,7 +28,7 @@ def index():
 
     if response.status_code == 200:
         data = []
-        if request.form["x_data"]:
+        if "x_data" in request.form:
             x_data = request.form["x_data"].split(",")
             data = [item + "=" + request.form[item] for item in x_data]
 
