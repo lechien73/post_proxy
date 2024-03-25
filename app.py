@@ -33,7 +33,6 @@ def index():
             data = [item + "=" + request.form[item] for item in x_data]
 
         success = SUCCESS_URL if SUCCESS_URL[0:3] == "http" else request.referrer + SUCCESS_URL
-        print(dir(request.referrer))
         return redirect(f"{success}?{'&'.join(data) if data else ''}")
     else:
         return redirect(f"{FAILURE_URL}?code={response.status_code}")
